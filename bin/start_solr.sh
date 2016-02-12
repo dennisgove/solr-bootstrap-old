@@ -5,13 +5,7 @@
 echo "Starting Solr"
 echo "============="
 
-hostname=`hostname`
-memory="64g"
-
-if [ "winterfell" = "$hostname" ]
-then
-  memory="8g"
-fi 
+memory="${1:-8g}"
 
 mkdir -p $SOLR_DATA_DIR/home
 mkdir -p $SOLR_LOG_DIR

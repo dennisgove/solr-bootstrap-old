@@ -4,6 +4,11 @@
 
 . $(dirname $(readlink -f $BASH_SOURCE[0]))/env.sh
 
+if (( $# < 2 )); then
+  echo "Expected argments collectionName dataDirectory [data file extension, default='json']"
+  exit 1
+fi
+
 collection=$1
 dataDirectory=$2
 extension="${3:-json}"
