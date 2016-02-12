@@ -5,44 +5,10 @@ Solr Bootstrap is a simple set of scripts that will help you create a new solr c
 ## Bootstrap
 ```
 solr-bootstrap/bin $ ./unpack_zookeeper.sh
-Extracting zookeeper into /Users/dgove1/dev/bfs/solr-bootstrap/bin/../bin/zookeeper
-
 solr-bootstrap/bin $ ./unpack_solr.sh
-Extracting solr into /Users/dgove1/dev/bfs/solr-bootstrap/bin/../bin/solr
-Creating /Users/dgove1/dev/bfs/solr-bootstrap/bin/../data/solr/home/solr.xml
-
 solr-bootstrap/bin $ ./start_zookeeper.sh
-Starting Zookeeper
-==================
-JMX enabled by default
-Using config: /Users/dgove1/dev/bfs/solr-bootstrap/bin/zookeeper/bin/../conf/zoo.cfg
-Starting zookeeper ... STARTED
-
 solr-bootstrap/bin $ ./start_solr.sh
-Starting Solr
-=============
-Waiting up to 30 seconds to see Solr running on port 12345 [/]
-Started Solr server on port 12345 (pid=26647). Happy searching!
-
-
 solr-bootstrap/bin $ ./create_collection.sh sample 4 2
-
-Connecting to ZooKeeper at localhost:12344 ...
-Uploading /Users/dgove1/dev/bfs/solr-bootstrap/bin/../data/solr/conf/sample for config sample to ZooKeeper at localhost:12344
-
-Creating new collection 'sample' using command:
-http://localhost:12345/solr/admin/collections?action=CREATE&name=sample&numShards=4&replicationFactor=2&maxShardsPerNode=8&collection.configName=sample
-
-{
-  "responseHeader":{
-    "status":0,
-    "QTime":3753},
-  "success":{"":{
-      "responseHeader":{
-        "status":0,
-        "QTime":3531},
-      "core":"sample_shard4_replica1"}}}
-
 solr-bootstrap/bin $
 ```
 
@@ -65,3 +31,6 @@ You can use index_data.sh to easily index data into your collection. This assume
 ```
 solr-bootstrap/bin $ ./index_data.sh <collectionName> <dataDirectory> [data file extension, default='json']
 ```
+
+## Environment Variables
+You can edit anything in solr-bootstrap/bin/env.sh to change various settings (like the ports used by solr and zookeeper)
