@@ -12,3 +12,7 @@ cat $BASE_DIR/dist/solr_* > $BASE_DIR/bin/solr.tar.gz
 tar -xf $BASE_DIR/bin/solr.tar.gz -C $BASE_DIR/bin/
 rm $BASE_DIR/bin/solr.tar.gz
 mv $BASE_DIR/bin/solr-$SOLR_VERSION $BASE_DIR/bin/solr
+
+echo "Creating $SOLR_DATA_DIR/home/solr.xml"
+mkdir -p $SOLR_DATA_DIR/home/
+cp $BASE_DIR/dist/solr.xml $SOLR_DATA_DIR/home/solr.xml

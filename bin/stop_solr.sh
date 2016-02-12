@@ -1,6 +1,8 @@
 #!/bin/bash
 
-echo "Stopping Solr"
-echo "=================="
+. $(dirname $(readlink -f $BASH_SOURCE[0]))/env.sh
 
-kill -9 `pgrep -fn solr`
+echo "Stopping Solr"
+echo "============="
+
+$SOLR_DIR/bin/solr stop

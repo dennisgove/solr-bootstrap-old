@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. $(dirname $(readlink -f $BASH_SOURCE[0]))/env.sh
+
 echo "Starting Solr"
 echo "============="
 
@@ -11,4 +13,7 @@ then
   memory="8g"
 fi 
 
-bin/solr/bin/solr -cloud -m ${memory} -z localhost:2181 -s data/solr/home $@
+mkdir -p $SOLR_DATA_DIR/home
+mkdir -p $SOLR_LOG_DIR
+
+$SOLR_DIR/bin/solr -cloud -m ${memory} -p $SOLR_PORT -z localhost:$ZOO_PORT -s $SOLR_DATA_DIR/home $@

@@ -1,12 +1,16 @@
 #!/bin/bash
 
-scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+#!/bin/bash
+
+. $(dirname $(readlink -f $BASH_SOURCE[0]))/env.sh
+
 collection=$1
+dataDirectory=$2
 extension="json"
 
-echo "Indexing $collection - working in directory $scriptDir"
+echo "Indexing $collection"
 
-files=$(ls raw_data/${collection}/*.${extension})
+files=$(ls $dataDirectory/*.${extension})
 total="$(echo -e "$(wc -w <<< "$files")" | tr -d '[[:space:]]')"
 
 echo "Iterating through $total files"
@@ -17,8 +21,8 @@ do
   echo "==================================================================================================================================="
   echo "($itemNumber of $total) $file"
 
-  echo "$scriptDir/bin/solr/bin/post -c $collection -filetypes ${extension} $file"
-  $scriptDir/bin/solr/bin/post -c $collection -filetypes ${extension} $file
+  echo "$SOLR_DIR/bin/post -p $SOLR_PORT -c $collection -filetypes ${extension} $file"
+  $SOLR_DIR/bin/post -p $SOLR_PORT -c $collection -filetypes ${extension} $file
 
   itemNumber=$((itemNumber+1))
   echo "==================================================================================================================================="

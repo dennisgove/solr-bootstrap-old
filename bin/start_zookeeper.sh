@@ -5,11 +5,12 @@
 echo "Starting Zookeeper"
 echo "=================="
 
-mkdir -p $EPHEMERAL_DIR
+mkdir -p $ZOO_DATA_DIR
+mkdir -p $ZOO_LOG_DIR
 
 echo "tickTime=2000
-dataDir=$DATA_DIR/zk
-clientPort=$ZK_PORT" > $ZOO_CFG
+dataDir=$ZOO_DATA_DIR
+clientPort=$ZOO_PORT" > $ZOO_DIR/conf/zoo.cfg
 
 
-$ZK_DIR/bin/zkServer.sh start
+$ZOO_DIR/bin/zkServer.sh start

@@ -1,0 +1,5 @@
+bin/solr/
+bin/zookeeper/
+data/solr/home/
+data/zookeeper/
+logs/
