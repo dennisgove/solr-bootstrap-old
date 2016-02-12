@@ -6,7 +6,7 @@
 
 collection=$1
 dataDirectory=$2
-extension="json"
+extension="${3:-json}"
 
 echo "Indexing $collection"
 
